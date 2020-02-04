@@ -23,7 +23,7 @@ void Fecha::muestraFecha(){
 
 int Fecha::convierte(){
 	int d;
-    d=anio*1000+mes*100+dia;
+    d=anio*10000+mes*100+dia;
     cout<<  "el valor devuelto es "<< d <<endl;
     return d;
 }
