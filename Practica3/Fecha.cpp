@@ -27,3 +27,14 @@ int Fecha::convierte(){
     cout<<  "el valor devuelto es "<< d <<endl;
     return d;
 }
+
+bool Fecha::leapyr(){
+	if ( anio%4 == 0 && anio%100 !=0 ){
+		return true;
+	}else{
+		if ( anio % 400 == 0)
+			return true;
+		else
+			return false;
+	}
+}

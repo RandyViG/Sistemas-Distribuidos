@@ -8,5 +8,6 @@ int main(){
 	b.muestraFecha();
 	c.muestraFecha();
 	d.convierte();
+	cout << " Es bisiesto :" << a.leapyr() << endl;
 	return 0;
 }

@@ -14,6 +14,7 @@ public:
 	void inicializaFecha(int, int, int);
 	void muestraFecha();
 	int convierte();
+	bool leapyr();
 };
 
 #endif
