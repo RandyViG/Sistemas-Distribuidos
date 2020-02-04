@@ -20,3 +20,10 @@ void Fecha::muestraFecha(){
 	cout << "La fecha es(dia-mes-año): "<< dia << "-" << mes << "-" << anio << endl;
 	return;
 }
+
+int Fecha::convierte(){
+	int d;
+    d=anio*1000+mes*100+dia;
+    cout<<  "el valor devuelto es "<< d <<endl;
+    return d;
+}
