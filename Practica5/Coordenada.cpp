@@ -1,14 +1,19 @@
 #include"Coordenada.h"
+#include<iostream>
+#include <cmath>
+#define PI 3.141592653589793
 
-Coordenada::Coordenada(double xx, double yy) : x(xx), y(yy)
-{ }
+using namespace std;
 
-double Coordenada::obtenerX()
-{
+Coordenada::Coordenada(double r, double teta) {
+    x = r * cos(teta);
+    y = r * sin(teta);
+ }
+
+double Coordenada::obtenerX(){
     return x;
 }
 
-double Coordenada::obtenerY()
-{
+double Coordenada::obtenerY(){
     return y;
 }
