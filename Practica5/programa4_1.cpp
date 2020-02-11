@@ -1,8 +1,9 @@
 #include <iostream>
+#include <cmath>
+
 using namespace std;
 
-class Coordenada
-{
+class Coordenada{
     private:
         double x;
         double y;  
@@ -12,8 +13,7 @@ class Coordenada
         double obtenerY();
 };
 
-class Rectangulo
-{
+class Rectangulo{
     private:
         Coordenada superiorIzq;
         Coordenada inferiorDer;
