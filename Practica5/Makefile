@@ -5,4 +5,4 @@ Rectangulo.o: Rectangulo.cpp Coordenada.o Rectangulo.h
 Coordenada.o: Coordenada.cpp Coordenada.h
 			g++ Coordenada.cpp -c
 clean:
-		rm *.o 
+		rm -f *.o prac_campo 
