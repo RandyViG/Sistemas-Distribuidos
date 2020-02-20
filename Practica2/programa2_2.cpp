@@ -19,7 +19,5 @@ int main(){
 	}
 	cout << "Total de años bisiestos : " << total << endl;
 
-	Fecha f(1,4,2021);
-
 	return 0;
 }

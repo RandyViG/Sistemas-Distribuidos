@@ -3,19 +3,10 @@
 
 using namespace std;
 
-Fecha::Fecha(int dd, int mm, int aaaa): dia(dd), mes(mm), anio(aaaa){
-	if((mes < 1) || (mes > 12)){
-		cout << "Valor ilegal para el mes!\n";
-		exit(1);
-	}
-	if ( (dia < 1) || (dia > 31) ){
-		cout << "Valor ilegal para el dia!\n";
-		exit(1);
-	}
-	if ( (anio < 0) || (anio > 2020) ){
-		cout << "Valor ilegal para el año!\n";
-		exit(1);
-	}
+Fecha::Fecha(int dd, int mm, int aaaa){
+	mes = mm;
+	dia = dd;
+	anio = aaaa;
 }
 
 void Fecha::inicializaFecha(int dd, int mm, int aaaa){
