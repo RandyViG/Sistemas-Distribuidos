@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Random;
 
 public class Ejercicio3{
     public static void main( String [] args){
@@ -6,10 +6,12 @@ public class Ejercicio3{
         int c, cont=0;
         char [] cadena = new char[4];
         StringBuilder cadenota = new StringBuilder();
+        Random r = new Random();
         for (int i=0; i < 87000000; i++){
             for (int  j=0; j<3; j++){
-                c = (new Random().nextInt(24)) + 65;
-                cadena[j] = (char)c;
+                //c = (new Random().nextInt(24)) + 65;
+                //cadena[j] = (char)c;
+                cadena[j] = (char)( r.nextInt(26)+'A');
             }
             cadena[3] = ' ';
             cadenota.append(cadena);
