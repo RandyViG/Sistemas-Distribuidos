@@ -8,4 +8,6 @@
 3. Clases en C++.
 4. Constructores y sus parametros C++.
 5. Composición en C++.
+6. STL Iteradores.
+7. Clase string.
 
