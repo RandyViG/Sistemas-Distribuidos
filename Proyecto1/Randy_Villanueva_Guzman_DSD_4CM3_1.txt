@@ -1,0 +1,557 @@
+#include<iostream>
+
+using namespace std;
+
+int main( void ){
+    double n,b,h;
+    cout << " Raíz cuadrada utilizando al algoritmo babilónico " << endl;
+    cout << "Ingresa el numero del cual quieres saber la raiz: ";
+    cin >> n;
+    b = n;
+    h = 0;
+    while ( h != b ){
+        h=b;
+        b = (n/b + h)/2;
+    }
+    cout << "La raiz cuadra de: " << n << " es: " << h << endl;
+    return 0;
+}
+
+***************************************************************************************
+
+#include<iostream>
+
+using namespace std;
+const float GRAVEDAD = 9.80665;
+
+int main( void ){
+    float tiempo,altura;
+    cout << "Ingresa el tiempo que tarde en caer la pelota: ";
+    cin >> tiempo;
+    altura = ( GRAVEDAD*(tiempo*tiempo) )/2;
+    cout << "La altura del edificio es: " << altura << endl;
+}
+
+***************************************************************************************
+
+#include<iostream>
+
+using namespace std;
+
+int main( void ){
+    int horas,minutos,segundos;
+    cout << "Ingresa el tiempo en segundos: " ;
+    cin >> segundos;
+    minutos = segundos / 60;
+    segundos = segundos % 60;
+    horas = minutos / 60;
+    minutos = minutos % 60;
+    cout << "Equivale a " << horas << " horas con " << minutos << " minutos y " <<
+        segundos << " segundos" << endl; 
+}
+
+***************************************************************************************
+
+#include<iostream>
+#include"Temperatura.h"
+
+using namespace std;
+void ingresarTemperatura( Temperatura t );
+void mostrarDatos( Temperatura t );
+
+int main( ){
+    Temperatura t;
+    t.setTempCelsius(21);
+    t.getTempCelsius();
+    t.getTempFahrenheit();
+    t.getTempKelvin();
+
+    t.setTempFahrenheit(86);
+    t.getTempCelsius();
+    t.getTempFahrenheit();
+    t.getTempKelvin();
+
+    t.setTempKelvin(323.15);
+    t.getTempCelsius();
+    t.getTempFahrenheit();
+    t.getTempKelvin();
+
+    return 0;
+}
+
+---------------------------------------------------------------------------------------
+
+#ifndef __TEMPERATURA_H__
+#define __TEMPARATURA_H__
+
+#include<iostream>
+
+using namespace std;
+
+class Temperatura{
+    private:
+        double kelvin;
+    public:
+        Temperatura( double = 0.0 );
+        void setTempKelvin( double temp);
+        void setTempFahrenheit( double temp );
+        void setTempCelsius( double temp );
+        void getTempKelvin( );
+        void getTempFahrenheit( );
+        void getTempCelsius( );
+};
+
+#endif
+
+---------------------------------------------------------------------------------------
+
+#include<iostream>
+#include"Temperatura.h"
+
+using namespace std;
+
+Temperatura :: Temperatura( double temp ): kelvin(temp) { }
+
+void Temperatura :: setTempKelvin( double temp){ 
+    kelvin = temp;
+}
+void Temperatura :: setTempFahrenheit( double temp ){
+    kelvin = (temp - 32 ) * 5.0/9.0 + 273.15;
+}
+void Temperatura :: setTempCelsius( double temp ){
+    kelvin = temp + 273.15;
+}
+void Temperatura :: getTempKelvin( ){
+    cout << "La tempperatura en kelvin es: " << kelvin << endl;
+}
+void Temperatura :: getTempFahrenheit( ){
+    cout << "La temperatura en Fahrenheit es: "<< (kelvin - 273.15)* 9.0/5.0 + 32 << endl; 
+}
+void Temperatura :: getTempCelsius( ){
+    cout << "La temperatura en Celsius es: " << (kelvin - 273.15) << endl;
+}   
+
+***************************************************************************************
+
+#include<iostream>
+#include"Fraccion.h"
+
+using namespace std;
+
+int main(){
+    Fraccion f;
+    double result;
+    f.setFraccion(18,15);
+    cout << "Resultado es: " << f.getResult() << endl;
+    f.getMinimaExpresion();
+
+    return 0;
+}
+
+---------------------------------------------------------------------------------------
+
+#ifndef __FRACCION_H__
+#define __FRACCION_H__
+
+#include<iostream>
+using namespace std;
+
+class Fraccion{
+    private:
+        int numerador;
+        int denominador;
+    public:
+        Fraccion(int = 0, int = 0);
+        void setFraccion(int num, int den);
+        double getResult();
+        void getMinimaExpresion();
+        int mcd(int num, int den);
+};
+
+#endif
+
+---------------------------------------------------------------------------------------
+
+#include<iostream>
+#include"Fraccion.h"
+
+Fraccion :: Fraccion(int num , int den): numerador(num) , denominador(den){}
+
+void Fraccion :: setFraccion(int num, int den){
+    numerador = num;
+    denominador = den;
+}
+
+double Fraccion :: getResult(){
+    return (double)numerador / (double) denominador;
+}
+
+void Fraccion :: getMinimaExpresion(){
+    int maxComunDivisor = mcd(numerador,denominador); 
+    cout << "Minima expresión:";
+    cout << numerador/maxComunDivisor << "/" << denominador/maxComunDivisor << endl;
+}
+
+int Fraccion :: mcd(int num, int den){
+    if ( den == 0)
+        return num;
+    else
+        return mcd( den, num%den );   
+}
+
+***************************************************************************************
+
+#include<iostream>
+#include"Ortoedro.h"
+
+using namespace std;
+
+int main(){
+    Ortoedro o(Coordenada(0,0,0),Coordenada(5,4,3));
+    o.obtieneVertices();
+    o.obtieneArea();
+    o.obtieneVolumen();
+    
+}
+
+---------------------------------------------------------------------------------------
+
+#ifndef __ORTOEDRO_H__
+#define __ORTOEDRO_H__
+
+#include<iostream>
+#include"Rectangulo.h"
+#include"Coordenada.h"
+
+using namespace std;
+
+class Ortoedro{
+    private:
+        Rectangulo rec;
+        Rectangulo rectangulo[6];
+        Coordenada esqOrigen;
+        Coordenada esqOpuesto;
+    public:
+        Ortoedro();
+        Ortoedro( Coordenada origen , Coordenada opuesto );
+        void obtieneVertices();
+        void obtieneArea();
+        void obtieneVolumen();
+};
+
+#endif
+
+----------------------------------------------------------------------------------------
+
+#include<iostream>
+#include"Ortoedro.h"
+#include"Rectangulo.h"
+#include"Coordenada.h"
+
+using namespace std;
+
+Ortoedro :: Ortoedro (): esqOrigen(0,0,0),esqOpuesto(0,0,0) {}
+
+Ortoedro :: Ortoedro( Coordenada origen , Coordenada opuesto ){
+    esqOrigen = origen;
+    esqOpuesto = opuesto;
+
+    Coordenada aux;
+
+    aux.inicializar( opuesto.obtenerX() , origen.obtenerY(), opuesto.obtenerZ() );
+    rectangulo[0].inicializar(origen, aux);
+
+    aux.inicializar( origen.obtenerX() , opuesto.obtenerY(), opuesto.obtenerZ() );
+    rectangulo[1].inicializar(origen, aux);
+
+    aux.inicializar( origen.obtenerX() , opuesto.obtenerY(), origen.obtenerZ() );
+    rectangulo[2].inicializar(aux, opuesto);
+
+    aux.inicializar( opuesto.obtenerX() , origen.obtenerY(), origen.obtenerZ() );
+    rectangulo[3].inicializar(aux, opuesto);
+
+    aux.inicializar( opuesto.obtenerX() , opuesto.obtenerY(), origen.obtenerZ() );
+    rectangulo[4].inicializar(origen, aux);
+
+    aux.inicializar( origen.obtenerX() , origen.obtenerY(), opuesto.obtenerZ() );
+    rectangulo[5].inicializar(aux, opuesto);
+}
+
+void Ortoedro :: obtieneArea(){
+    double superficie = rectangulo[5].obtieneArea();
+    cout << "\nLa superficie del ortoedro es: " << superficie << endl;
+}
+
+void Ortoedro :: obtieneVertices(){
+    for (int i = 0; i< 6; i++){
+        cout << "\nRectangulo " << i+1 << endl;
+        rectangulo[i].imprimeEsq();
+    }
+}
+
+void Ortoedro :: obtieneVolumen(){
+    double superficie = rectangulo[5].obtieneArea();
+    cout << "El volumen es: " << superficie * esqOpuesto.obtenerZ() << endl;
+}
+
+--------------------------------------------------------------------------------------
+
+#include<iostream>
+#include"Ortoedro.h"
+#include"Rectangulo.h"
+#include"Coordenada.h"
+
+using namespace std;
+
+Ortoedro :: Ortoedro (): esqOrigen(0,0,0),esqOpuesto(0,0,0) {}
+
+Ortoedro :: Ortoedro( Coordenada origen , Coordenada opuesto ){
+    esqOrigen = origen;
+    esqOpuesto = opuesto;
+
+    Coordenada aux;
+
+    aux.inicializar( opuesto.obtenerX() , origen.obtenerY(), opuesto.obtenerZ() );
+    rectangulo[0].inicializar(origen, aux);
+
+    aux.inicializar( origen.obtenerX() , opuesto.obtenerY(), opuesto.obtenerZ() );
+    rectangulo[1].inicializar(origen, aux);
+
+    aux.inicializar( origen.obtenerX() , opuesto.obtenerY(), origen.obtenerZ() );
+    rectangulo[2].inicializar(aux, opuesto);
+
+    aux.inicializar( opuesto.obtenerX() , origen.obtenerY(), origen.obtenerZ() );
+    rectangulo[3].inicializar(aux, opuesto);
+
+    aux.inicializar( opuesto.obtenerX() , opuesto.obtenerY(), origen.obtenerZ() );
+    rectangulo[4].inicializar(origen, aux);
+
+    aux.inicializar( origen.obtenerX() , origen.obtenerY(), opuesto.obtenerZ() );
+    rectangulo[5].inicializar(aux, opuesto);
+}
+
+void Ortoedro :: obtieneArea(){
+    double superficie = rectangulo[5].obtieneArea();
+    cout << "\nLa superficie del ortoedro es: " << superficie << endl;
+}
+
+void Ortoedro :: obtieneVertices(){
+    for (int i = 0; i< 6; i++){
+        cout << "\nRectangulo " << i+1 << endl;
+        rectangulo[i].imprimeEsq();
+    }
+}
+
+void Ortoedro :: obtieneVolumen(){
+    double superficie = rectangulo[5].obtieneArea();
+    cout << "El volumen es: " << superficie * esqOpuesto.obtenerZ() << endl;
+}
+
+---------------------------------------------------------------------------------------
+
+#ifndef __RECTANGULO_H__
+#define __RECTANGULO_H__
+#include<iostream>
+#include"Coordenada.h"
+
+class Rectangulo{
+    private:
+        Coordenada superiorDer;
+        Coordenada inferiorIzq;
+    public:
+        Rectangulo();
+        Rectangulo(Coordenada cori, Coordenada cord);
+        void inicializar(Coordenada cori, Coordenada cord);
+        void imprimeEsq();
+        Coordenada obtieneSupDer();
+        Coordenada obtieneInfIzq();
+        double obtieneArea();
+};
+
+#endif
+
+---------------------------------------------------------------------------------------
+
+#include<iostream>
+#include"Rectangulo.h"
+using namespace std;
+
+Rectangulo::Rectangulo() : superiorDer(0,0,0), inferiorIzq(0,0,0)
+{ }
+
+Rectangulo::Rectangulo(Coordenada cd,Coordenada ci){ 
+    inferiorIzq = cd;
+    superiorDer = ci;
+}
+
+void Rectangulo::inicializar(Coordenada cd , Coordenada ci){
+    inferiorIzq = cd;
+    superiorDer = ci;
+}
+
+void Rectangulo::imprimeEsq(){
+    cout << "Esquina inferior izquierda.\n";
+    cout << "x = " << inferiorIzq.obtenerX() << " y = " << inferiorIzq.obtenerY() << " z = " << inferiorIzq.obtenerZ() << endl;
+    cout << "Esquina superior derecha.\n";
+    cout << "x = " << superiorDer.obtenerX() << " y = " << superiorDer.obtenerY() << " z = " << superiorDer.obtenerZ() << endl;
+}
+
+double Rectangulo::obtieneArea(){
+
+    float alto = superiorDer.obtenerY() - inferiorIzq.obtenerY();
+    float ancho = superiorDer.obtenerX() - inferiorIzq.obtenerX();
+    return alto * ancho ;
+}
+
+Coordenada Rectangulo :: obtieneSupDer(){
+    return superiorDer;
+}
+
+Coordenada Rectangulo :: obtieneInfIzq(){
+    return inferiorIzq;
+}
+
+---------------------------------------------------------------------------------------
+
+#ifndef __COORDENADA_H__
+#define __COORDENADA_H__
+
+class Coordenada{
+    private:
+        double x;
+        double y;
+        double z;  
+    public:
+        Coordenada();
+        Coordenada(double xx, double yy, double zz);
+        void inicializar(double xx, double yy, double zz);
+        double obtenerX();
+        double obtenerY();
+        double obtenerZ();
+};
+
+#endif
+
+----------------------------------------------------------------------------------------
+
+#include"Coordenada.h"
+#include<iostream> 
+
+using namespace std;
+
+Coordenada::Coordenada() : x(0),y(0),z(0) 
+{}
+
+Coordenada::Coordenada(double xx, double yy, double zz) : x(xx),y(yy),z(zz) 
+{ }
+
+void Coordenada::inicializar(double xx, double yy, double zz){
+    x=xx;
+    y=yy;
+    z=zz;
+}
+
+double Coordenada::obtenerX(){
+    return x;
+}
+
+double Coordenada::obtenerY(){
+    return y;
+}
+
+double Coordenada::obtenerZ(){
+    return z;
+}
+
+***************************************************************************************
+
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include "Criba.h"
+
+using namespace std;
+
+int main(){
+    
+    int n, inicial=2, multiplo;
+    vector <Criba> primos;
+    cout << "Ingresa el rango de numeros: ";
+    cin >> n;
+    primos.reserve(n);
+    for (int i=0 ; i < n-1 ; i++){
+        primos[i].setValor(inicial++);
+        primos[i].setPrimo(true);
+    }
+
+    for (int i=2 ; i<n ; i+=2)
+        primos[i].setPrimo(false);
+
+    
+    for (int i=1 ; i<n ; i++){
+        if( primos[i].getPrimo() == false )
+            continue;
+        if( pow(primos[i].getValor() ,2) > n)
+            break;
+
+        multiplo = primos[i].getValor();
+
+        for (int j=i+1 ; j<n ; j++){
+            if( primos[j].getValor() % multiplo == 0)
+                primos[j].setPrimo(false);
+        }
+
+    }
+
+    cout << "Los numeros primos son: ";
+    for(int i = 0 ; i<n ; i++)
+        if( primos[i].getPrimo() )
+            cout << primos[i].getValor() << ",";
+    cout << endl;
+    return 0;
+}
+
+---------------------------------------------------------------------------------------
+
+#ifndef __CRIBA_H__
+#define __CRIBA_H__
+
+#include <iostream>
+
+using namespace std;
+
+class Criba{
+    private:
+        int valor;
+        bool isPrimo;
+    public:
+        void setValor( int );
+        int getValor();
+        bool getPrimo();
+        void setPrimo( bool );
+};
+
+#endif
+
+----------------------------------------------------------------------------------------
+
+#include <iostream>
+#include "Criba.h"
+
+using namespace std;
+
+bool Criba :: getPrimo(){
+    return isPrimo;
+}
+
+void Criba :: setPrimo( bool prim){
+    isPrimo = prim;
+}
+
+int Criba :: getValor(){
+    return valor;
+}
+
+void Criba :: setValor( int val){
+    valor = val;
+}
