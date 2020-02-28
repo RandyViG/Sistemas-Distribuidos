@@ -9,5 +9,7 @@
 4. Constructores y sus parametros C++.
 5. Composición en C++.
 6. STL Iteradores.
-7. Clase string.
+7. Clase string en C++.
+8. Threads en C++
+9. Conveniencia de Threads en C++
 
