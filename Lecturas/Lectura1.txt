@@ -1,0 +1,29 @@
+¿Cuál palabra correcta que hace referencia a la siguiente definición? Es aquel en que los componentes localizados en computadores, conectados en red, comunican y coordinan sus acciones mediante el paso de mensajes.
+A. Sistema Distribuido
+B. Sistema Automatizado
+C. Sistema Operativo
+D. Sistema Embebido
+
+¿Qué consecuencia de un sistema distribuido permite manejar recursos compartidos, donde se pueden realizar uno o más procesos a la vez y pueden ser ejecutados por uno o más entidades?
+A. Concurrencia
+B. Inexistencia de reloj global
+C. Fallos independientes
+D. Escalabilidad
+
+¿Qué desafío de los sistemas distribuidos hace referencia al conservar su efectividad cuando ocurre un incremento significativo en el número de recursos y/o usuarios?
+A. Escalabilidad
+B. Seguridad
+C. Fallos independientes
+D. Concurrencia
+
+¿Qué componente es parte del desafío de los sistemas distribuidos donde se enfoca a la protección de la información contra el descubrimiento por individuos no autorizados?
+A. Confidencialidad
+B. Seguridad
+C. Integridad
+D. Disponibilidad
+
+¿Cuál es la forma de la transparencia que permite acceder a los recursos locales y remotos empleando operaciones idénticas?
+A. Transparencia de acceso
+B. Transparencia de movilidad
+C. Transparencia al escalado
+D. Transparencia de replicación

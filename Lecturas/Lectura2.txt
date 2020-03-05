@@ -1,0 +1,29 @@
+¿Qué comunicación es en la que los procesos se receptor y emisor se sincronizan con cada mensaje que estos se envian?
+A. Comunicación Asincrona
+B. Comunicación UDP
+C. Comunicación TCP
+D. Comunicación Sincrona
+
+¿Qué opción se refiere al siguiente enunciado? Utiliza la abstracción de sockets, la cual nos proporciona los puntos extremos de la comunicación entre procesos
+A. Comunicación UDP
+B. Comunicación TCP
+C. Comunicación TCP y UDP
+D. Ninguna de las anteriores
+
+¿Qué comunicación se transmite desde un proceso emisor a un proceso receptor sin acuse de recibo ni de intentos mediante datragramas, y si algo falla, el mensaje puede no llegar a su destino?
+A. Comunicación UDP
+B. Comunicación TCP
+C. Comunicación TCP y UDP
+D. Ninguna de las anteriores
+
+¿A qué falló se refiere en la comunicación de datagramas UDP cuando los mensajes pueden llegar a ser desechados ocasionalmente, ya sea por un error en la suma de comprobación o por que no hay espacio en el buffer?
+A. Fallo en el tamaño del mensaje
+B. Fallo de omisión
+C. Fallo de ordenación
+D. Ninguna de las anteriores
+
+¿Qué tipo de comunicación utiliza timeouts y la retransmisión de los paquetes perdidos en caso de algun fallo?
+A. Comunicación de datagrams UDP
+B. Comunicación de por streams TCP
+C. Comunicación TCP y UDP
+D. Ninguna de las anteriores

@@ -1,0 +1,30 @@
+¿Qué caracteristica de multicast simple, coloca réplicas de los datos en los ordenadores de los usuarios?
+A. Mejor rendimiento a través de datos replicados
+B. Descubriendo servicios en redes espontáneas
+C. Tolerancia a fallos basada en servicios replicados
+D. Propagación de notificaciones de eventos
+
+¿Con qué tipo de clase se especifica un grupo multicast?
+A. Clase D
+B. Clase A
+C. Clase B
+D. Clase C
+
+¿Qué protocolo de comunicacion para multicast se utiliza en el nivel de programación de aplicaciones?
+A. UDP
+B. TCP
+C. FTP
+D. HTTP
+
+¿Cuál es el principal problema que presentan las comunicaciones multicast por su protocolo de comunicación?
+A. No garantiza el envio del paquete a todos los usuarios
+B. No permite mandar grandes volumenes de paquetes
+C. El TTL ocasiona colisiones con otros grupos multicast
+D. No emplea control de flujo ni ordena los paquetes
+
+¿En cuál de los siguentes ejemplos no importa la perdida ocasional de paquetes?
+A. Descubriendo servicios en redes espontáneas
+B. Mejor rendimiento a través de datos replicados
+C. Tolerancia a fallos basada en servicios replicados
+D. Propagación de notificaciones de eventos
+

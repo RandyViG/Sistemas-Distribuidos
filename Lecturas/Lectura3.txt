@@ -1,0 +1,31 @@
+Consiste en tomar una colección de ítems de datos y ensamblarlos de un modo adecuado para la transmisión de un mensaje:
+A. Marshalling
+B. Unmarshalling
+C. Representación externa de datos
+D. Hypertext transfer protocol.
+
+¿Qué se hace para que tengan una forma estandar los datos de longitud variable?
+A. Se rellenan con 0
+B. Se rellenan con 1
+C. Se rellenan con otros datos
+D. Se multiplican
+
+Se refiere a la actividad de aplanarcun objeto o conjunto relacionado con objetos para obtener una forma lineal adecuada para ser almacenada en disco o para ser transmitida en un mensaje
+A. Serialization method
+B. Handlers
+C. Unmarshalling
+D. Request-reply
+
+El numero de puerto y el tiempo constituyen a
+A. Identificador único de ese computador
+B. Direccion de memoria
+C. Conjunto de elementos
+D. Multiplicador de datos
+
+Especifica el URL de un recurso que puede tratar los datos `portados con la petición
+A. Post
+B. Put
+C. Delete
+D. Head
+
+
