@@ -10,7 +10,7 @@ int main(){
     char val[2],resultado;
 
     printf("\n********** Servidor iniciado **********");
-    printf("\nEsperando mensajes en el puerto: %d\n");
+    printf("\nEsperando mensajes en el puerto: %d\n",pto);
     
     while(1) {
         datos = res.getRequest( );
