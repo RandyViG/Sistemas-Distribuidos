@@ -13,8 +13,10 @@ int main(int argc, char* argv[]){
     num[0] = atoi(argv[2]);
     num[1] = atoi(argv[3]);
     Solicitud sol;
-    resultado = sol.doOperation( argv[1] , ptoServidor , 1 , num , atoi(argv[4]) );
-    printf("\nRespuesta: %d\n",resultado[0]);
+    for (int i = 0; i < atoi(argv[4]) ; i++){
+        resultado = sol.doOperation( argv[1] , ptoServidor , 1 , num );
+        printf("\nRespuesta: %d\n",resultado[0]);
+    }
     
     return 0;
 }

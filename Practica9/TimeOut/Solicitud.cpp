@@ -11,7 +11,7 @@ Solicitud :: Solicitud (){
     socketlocal = new SocketDatagrama( 0 );
 }
 
-char * Solicitud :: doOperation( char *IP, int puerto, int operationId, char *arguments , int intentos){
+char * Solicitud :: doOperation( char *IP, int puerto, int operationId, char *arguments ){
     
     struct mensaje datos,respuesa;
     char *aux;
@@ -24,7 +24,7 @@ char * Solicitud :: doOperation( char *IP, int puerto, int operationId, char *ar
     PaqueteDatagrama dat = PaqueteDatagrama( (char *)&datos, sizeof(datos), IP ,puerto );
     PaqueteDatagrama paqdata = PaqueteDatagrama( sizeof(respuesa) );
 
-    for(i=0; i < intentos ; i++){
+    for(i=0; i < 7 ; i++){
         if( socketlocal->envia(dat) ){
             cout << "\nEnviando Mensaje:" << endl;
             cout << "IP: " << dat.obtieneDireccion() << endl;

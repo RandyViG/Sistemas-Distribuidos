@@ -8,7 +8,7 @@ class Solicitud{
         SocketDatagrama *socketlocal;
     public:
         Solicitud();
-        char * doOperation(char *IP, int puerto, int operationId, char *arguments , int intentos);
+        char * doOperation(char *IP, int puerto, int operationId, char *arguments );
 };
 
 #endif
