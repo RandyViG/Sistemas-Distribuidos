@@ -1,7 +1,7 @@
 #ifndef __MENSAJE_H__
 #define __MENSAJE_H__
 
-#define TAM_MAX_DATA 4
+#define TAM_MAX_DATA 4000
 #define suma 1
 
 struct mensaje{
