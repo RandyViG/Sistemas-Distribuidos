@@ -52,7 +52,7 @@ int SocketDatagrama ::recibeTimeout( PaqueteDatagrama & p, time_t segundos, suse
 	n = recvfrom(s, (char *)p.obtieneDatos(), p.obtieneLongitud() * sizeof(char), 0, (struct sockaddr *) &direccionForanea, &len);
 	if( n < 0 ){
 		if( errno == EWOULDBLOCK ){
-			fprintf(stderr, "\nTiempo para recepción transcurrido\n");
+			fprintf(stderr, "\n\rTiempo para recepción transcurrido\n");
 			return -1;
 		}
 		else

@@ -13,7 +13,7 @@ Solicitud :: Solicitud (){
 
 char * Solicitud :: doOperation( char *IP, int puerto, int operationId, char *arguments ){
     
-    struct mensaje datos,respuesa;
+    struct mensaje datos,respuesta;
     char *aux;
     int i,n;
     datos.messageType = 0;
@@ -22,14 +22,16 @@ char * Solicitud :: doOperation( char *IP, int puerto, int operationId, char *ar
     memcpy( datos.arguments ,arguments , sizeof(arguments) );
 
     PaqueteDatagrama dat = PaqueteDatagrama( (char *)&datos, sizeof(datos), IP ,puerto );
-    PaqueteDatagrama paqdata = PaqueteDatagrama( sizeof(respuesa) );
+    PaqueteDatagrama paqdata = PaqueteDatagrama( sizeof(respuesta) );
 
     for(i=0; i < 7 ; i++){
         socketlocal->envia(dat);
         n = socketlocal->recibeTimeout(paqdata,SEGUNDOS,MICROSEGUNDOS);
         if ( n != -1){
-            memcpy(&respuesa, paqdata.obtieneDatos(), sizeof(respuesa) );
-            aux = respuesa.arguments;
+            memcpy(&respuesta, paqdata.obtieneDatos(), sizeof(respuesta) );
+            if( respuesta.operationId < id )
+                continue;
+            aux = respuesta.arguments;
             return aux;
         }
     }

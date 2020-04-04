@@ -5,6 +5,7 @@
 
 class Solicitud{
     private:
+        int id = 0;
         SocketDatagrama *socketlocal;
     public:
         Solicitud();

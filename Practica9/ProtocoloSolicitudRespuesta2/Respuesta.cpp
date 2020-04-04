@@ -4,6 +4,8 @@
 
 using namespace std;
 
+int Respuesta :: getError( void ){ return error; }
+
 Respuesta :: Respuesta( int pto ) {
     socketlocal = new SocketDatagrama( pto );
 }
@@ -15,6 +17,12 @@ struct mensaje * Respuesta :: getRequest( void ){
         memcpy(&datos,mensaje.obtieneDatos(),sizeof(datos));
         memcpy(ip,mensaje.obtieneDireccion(),16);
         ptoDestino = mensaje.obtienePuerto();
+        if( datos.requestId < id )
+            error = 0;
+        else{
+            id++;
+            error = 1;
+        }
     }
     aux = &datos;
     return aux;
@@ -26,7 +34,6 @@ void Respuesta :: sendReply( char *respuesta ){
     datos.operationId = 1;
     datos.requestId = 1;
     memcpy( datos.arguments , respuesta , sizeof(respuesta) );
-
     PaqueteDatagrama dat = PaqueteDatagrama( (char *)&datos, sizeof(datos), ip , ptoDestino );
     socketlocal->envia(dat);
 }
