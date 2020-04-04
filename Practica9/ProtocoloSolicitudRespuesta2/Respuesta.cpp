@@ -4,24 +4,26 @@
 
 using namespace std;
 
-int Respuesta :: getError( void ){ return error; }
-
 Respuesta :: Respuesta( int pto ) {
     socketlocal = new SocketDatagrama( pto );
 }
 
+int Respuesta :: getError( void ){ return error; }
+
 struct mensaje * Respuesta :: getRequest( void ){
     struct mensaje datos,*aux;
+    printf("\nEsperando paquete");
     PaqueteDatagrama mensaje = PaqueteDatagrama( sizeof(datos) );
     if(socketlocal ->recibe(mensaje)){
+        printf("\nId : %d",id);
         memcpy(&datos,mensaje.obtieneDatos(),sizeof(datos));
         memcpy(ip,mensaje.obtieneDireccion(),16);
         ptoDestino = mensaje.obtienePuerto();
         if( datos.requestId < id )
-            error = 0;
+            error = 1;
         else{
             id++;
-            error = 1;
+            error = 0;
         }
     }
     aux = &datos;
@@ -30,9 +32,9 @@ struct mensaje * Respuesta :: getRequest( void ){
 
 void Respuesta :: sendReply( char *respuesta ){
     struct mensaje datos;
-    datos.messageType = 0;
+    datos.messageType = 1;
     datos.operationId = 1;
-    datos.requestId = 1;
+    datos.requestId = id;
     memcpy( datos.arguments , respuesta , sizeof(respuesta) );
     PaqueteDatagrama dat = PaqueteDatagrama( (char *)&datos, sizeof(datos), ip , ptoDestino );
     socketlocal->envia(dat);

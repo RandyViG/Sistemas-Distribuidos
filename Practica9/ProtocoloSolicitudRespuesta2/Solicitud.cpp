@@ -18,18 +18,18 @@ char * Solicitud :: doOperation( char *IP, int puerto, int operationId, char *ar
     int i,n;
     datos.messageType = 0;
     datos.operationId = operationId;
-    datos.requestId = 1;
+    datos.requestId = id++;
     memcpy( datos.arguments ,arguments , sizeof(arguments) );
 
     PaqueteDatagrama dat = PaqueteDatagrama( (char *)&datos, sizeof(datos), IP ,puerto );
     PaqueteDatagrama paqdata = PaqueteDatagrama( sizeof(respuesta) );
 
-    for(i=0; i < 7 ; i++){
+    for(i=0; i < 20 ; i++){
         socketlocal->envia(dat);
         n = socketlocal->recibeTimeout(paqdata,SEGUNDOS,MICROSEGUNDOS);
         if ( n != -1){
             memcpy(&respuesta, paqdata.obtieneDatos(), sizeof(respuesta) );
-            if( respuesta.operationId < id )
+            if( respuesta.requestId < id )
                 continue;
             aux = respuesta.arguments;
             return aux;

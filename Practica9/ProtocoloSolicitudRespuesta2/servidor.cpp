@@ -13,12 +13,12 @@ int main(){
     printf("\nEsperando mensajes en el puerto: %d\n",pto);
     
     while(1) {
-        memcpy(&datos,res.getRequest(),sizeof(datos));
+        memcpy(&datos,res.getRequest( ),sizeof(datos));
         if( res.getError() == 0 ){
             memcpy(&deposito,datos.arguments,4);
-            nbd += deposito;
-            printf("\nCuenta: %d \n", nbd);
+            nbd = nbd + deposito;
         }
+        printf("\nResultado: %d", nbd);
         res.sendReply( (char*)&nbd );
     }
 }
