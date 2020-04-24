@@ -1,0 +1,15 @@
+
+run: cliente.cpp servidor.cpp SocketMulticast.o SocketDatagrama.o
+	g++ servidor.cpp SocketMulticast.o SocketDatagrama.o PaqueteDatagrama.o -o servidor
+
+SocketDatagrama.o: SocketDatagrama.cpp PaqueteDatagrama.o SocketDatagrama.h
+	g++ SocketDatagrama.cpp -c
+
+SocketMulticast.o: SocketMulticast.cpp PaqueteDatagrama.o SocketMulticast.h
+	g++ SocketMulticast.cpp -c 
+
+PaqueteDatagrama.o: PaqueteDatagrama.cpp PaqueteDatagrama.h
+	g++ PaqueteDatagrama.cpp -c
+
+clean: 
+	rm -f *.o servidor
