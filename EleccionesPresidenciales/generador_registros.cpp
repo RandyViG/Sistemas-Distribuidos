@@ -79,7 +79,7 @@ int main(int argc, char *argv[]){
 	string aux;
 	for (std::vector<struct registro>::iterator it=registros_vector.begin(); it!=registros_vector.end(); ++it){
 		reg1 = *it;
-		write(destino, reg1.toString().c_str() , sizeof(aux) );
+		write(destino, reg1.toString().c_str() , sizeof( reg1.toString() ) );
 	}
 	fsync(destino);
 	close(destino);
