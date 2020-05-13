@@ -41,10 +41,9 @@ int main( int argc , char *argv[] ){
                 aux = reg.toString() + " " 
                     + to_string(timestamp.tv_sec) + "-" 
                     + to_string(timestamp.tv_usec) +  "\n";
-                if( ( archivo = open(argv[1], O_WRONLY |O_CREAT|O_APPEND,0666) ) )
+                if( ( archivo = open(argv[1], O_WRONLY |O_CREAT|O_APPEND,0666) )  == -1 )
                     perror(argv[1]);
 	            write( archivo , aux.c_str() , 50);
-	            fsync( archivo );
                 close( archivo );
             }
             else{

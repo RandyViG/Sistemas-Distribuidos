@@ -33,10 +33,9 @@ int main( int argc , char *argv[]){
             printf("CURP: %s\n",reg.CURP);
             printf("Partido: %s\n\n",reg.partido);
             aux = reg.toString() + "\n";
-            if( ( archivo = open(argv[1], O_WRONLY |O_CREAT|O_APPEND,0666) ) )
+            if( ( archivo = open(argv[1], O_WRONLY |O_CREAT|O_APPEND,0666) ) == -1 )
                 perror(argv[1]);
 	        write( archivo , aux.c_str() , 32);
-	        fsync( archivo );
             close( archivo );
         }
         res.sendReply( (char*)&argument );
