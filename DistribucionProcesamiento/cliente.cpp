@@ -39,13 +39,7 @@ int main(int argc, char *argv[]){
 	datos[0].limInferior='0'; datos[0].limSuperrior='3';
 	datos[1].limInferior='4'; datos[1].limSuperrior='6';
 	datos[2].limInferior='7'; datos[2].limSuperrior='9';
-
-	for( i = 0; i < 3 ; i++){
-		printf("IP: %s\n",datos[i].ip);
-		printf("Pto: %d\n",datos[i].pto);
-		printf("Inf %c Sup %c\n\n",datos[i].limInferior,datos[i].limSuperrior);
-	}
-
+	
 	thread th1(enviarRegistro,&datos[0]),
 	       th2(enviarRegistro,&datos[1]),
 		   th3(enviarRegistro,&datos[2]);
