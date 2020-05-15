@@ -65,10 +65,10 @@ void enviarRegistro( struct servidor * datos ){
 	else{
 		par[3]='\0';
 		cel[10]='\0';
-		cu[18]='\0';
+		cu[18]='\0';	
 		info[32]='\0';
 		for(i = 0; i < datos->nRegistros; i++){
-			read( archivo , info , 31 );
+			read( archivo , info , 32 );
 			memcpy(&cel, &info, sizeof(cel)-1); //Celular 
 			for(j = 0; j < 18; j++) //CURP
 				cu[j] = info[ j + 10 ];
