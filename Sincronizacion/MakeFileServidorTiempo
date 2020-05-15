@@ -1,0 +1,10 @@
+servidor:	servidorTiempo.cpp Respuesta.o SocketDatagrama.o PaqueteDatagrama.o 
+		g++ servidorTiempo.cpp Respuesta.o SocketDatagrama.o PaqueteDatagrama.o -o servidorTiempo
+Respuesta.o:	Respuesta.cpp Respuesta.h
+		g++ -c Respuesta.cpp
+SocketDatagrama.o:	SocketDatagrama.cpp SocketDatagrama.h
+			g++ -c SocketDatagrama.cpp
+PaqueteDatagrama.o:	PaqueteDatagrama.cpp PaqueteDatagrama.h
+			g++ -c PaqueteDatagrama.cpp
+clean:
+	rm -f *.o servidorTiempo

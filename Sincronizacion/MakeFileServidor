@@ -1,0 +1,14 @@
+servidor:	servidor.cpp Respuesta.o Solicitud.o SocketDatagrama.o PaqueteDatagrama.o trie.o
+		g++ servidor.cpp Respuesta.o Solicitud.o SocketDatagrama.o PaqueteDatagrama.o trie.o -o servidor
+Respuesta.o:	Respuesta.cpp Respuesta.h
+		g++ -c Respuesta.cpp
+Solicitud.o:	Solicitud.cpp Solicitud.h
+		g++ -c Solicitud.cpp
+SocketDatagrama.o:	SocketDatagrama.cpp SocketDatagrama.h
+			g++ -c SocketDatagrama.cpp
+PaqueteDatagrama.o:	PaqueteDatagrama.cpp PaqueteDatagrama.h
+			g++ -c PaqueteDatagrama.cpp
+trie.o:	trie.cpp trie.h
+		g++ -c trie.cpp
+clean:
+	rm -f *.o servidor
