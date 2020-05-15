@@ -8,8 +8,8 @@
 using namespace std;
 
 int main( int argc , char *argv[] ){
-    if( argc != 3 ){
-        printf("Uso: %s pto Nombre_Archivo \n" , argv[0]);
+    if( argc != 2 ){
+        printf("Uso: %s pto \n" , argv[0]);
         exit(0);
     }
     int pto = atoi(argv[1]);
