@@ -19,20 +19,29 @@ struct timeval start;
 
 static void handle_search(struct mg_connection *nc, struct http_message *hm , SocketDatagrama *s) {
 		char query[256]="No se encontro ningun servicio\0",ip[16];
-		int i,r;
+		int i,r,espera,segundos,usegundos;
 		unsigned char s_addr[4];
-		struct timeval end,final;
+		struct timeval end,final,tiempo,tiempo2;
 		PaqueteDatagrama recibe( sizeof(int) );
-		r = s->recibeTimeout(recibe,1,0);
-		gettimeofday(&end, NULL);
-		if( r != -1 ){
-			final.tv_sec = end.tv_sec - start.tv_sec;
-			final.tv_usec = end.tv_usec - start.tv_usec;
-			sprintf(query, "Servidor: %s tiempo de respuesta: %d.%d s",
-					recibe.obtieneDireccion() , final.tv_sec , final.tv_usec);
+		string aux="";
+		gettimeofday(&tiempo,NULL);
+		while( espera < 5000 ){
+			r = s->recibeTimeout(recibe,0,500000);
+			gettimeofday(&end, NULL);
+			if( r != -1 ){
+				final.tv_sec = end.tv_sec - start.tv_sec;
+				final.tv_usec = end.tv_usec - start.tv_usec;
+				sprintf(query, "Servidor: %s tiempo de respuesta: %d.%d s </br>",
+						recibe.obtieneDireccion() , final.tv_sec , final.tv_usec);
+				aux += string(query);
+			}
+			gettimeofday(&tiempo2,NULL);
+			segundos = tiempo2.tv_sec - tiempo.tv_sec;
+			usegundos = tiempo2.tv_usec - tiempo.tv_usec;
+			espera = ((segundos) * 1000 + usegundos/1000 );
 		}
-		mg_send_head( nc , 200 , strlen(query), "Content-Type: text/plain");
-		mg_printf(nc, "%s", query);
+		mg_send_head( nc , 200 , aux.length(), "Content-Type: text/html");
+		mg_printf( nc, "%s", aux.c_str() );
 }
 
 static void ev_handler(struct mg_connection *nc, int ev, void *p) {
