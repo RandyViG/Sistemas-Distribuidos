@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Mongoose REST</title>
+		<script src="jquery.min.js"></script>
+	</head>
+	<body style="font-family:arial;">
+		<div style="text-align:center">
+			<h1>Mongoose REST </h1>
+			<form method=get id="form-search" class="block">
+				<h2>Introduzca una IP Broadcast</h2>
+				<input type="text" id="search" name="search"><br><br>
+				<button>Enviar a Mongoose</button>
+			</form>
+			<div class="block" id="search-res"></div>
+
+				Ejemplo tomado del c&oacute;digo del alumno: Rolando Romero T&eacute;llez
+		</div>
+	</body>
+</html>
+
+<script>
+	$("#search-res").hide();
+	$('#form-search').submit(function(){
+		$("#search-res").show();
+		$("#search-res").html("<img src='load.gif' width=50/>");
+		$.ajax({
+			type: "POST",
+			url: "/search",
+			data:{
+				query:$("#search").val()
+			},
+			success: function(data){
+				$("#search-res").html(data);
+			}
+		});
+		return false;
+	});
+</script>
+
+<style>
+	h1{
+		color:#72c4f3
+	}
+	body{
+		background-color:#FFFF;
+	}
+	.block{
+		background-color:#57bbf4;
+		padding:20px;
+		margin-left:25%;
+		margin-right:25%;
+		border-radius:10px;
+	}
+	button{
+		background-color:#2599dc;
+		border:0;
+		padding:10px;
+		border-radius:10px;
+		color:#57bbf4;
+	}
+	#search{
+		height:40px;
+		font-size:20px;
+		width:300px;
+		border-radius:10px;
+	}
+</style>
