@@ -22,11 +22,9 @@ int main( int argc , char *argv[] ){
     
     while(1) {
         memcpy( &datos, res.getRequest( ) , sizeof(datos) );
-        if( res.getError() == 0 ){
-            gettimeofday( &currently , NULL );
-            printf("Timestamp %d - %d\n", timestamp.tv_sec, timestamp.tv_usec);
-            memcpy( &timestamp , datos.arguments , sizeof(timestamp) );
-        }
+        gettimeofday( &currently , NULL );
+        printf("Timestamp %d - %d\n", timestamp.tv_sec, timestamp.tv_usec);
+        memcpy( &timestamp , datos.arguments , sizeof(timestamp) );
         res.sendReply( (char*)&currently );
     }
 }
