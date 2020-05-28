@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Monitoreo de Votos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery.flot.min.js"></script>
+        <script src="js/jquery.flot.time.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/utils.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div class="content">
+            <img src="images/ipn.png" style="float:left; height: 100px; border-radius: 3px;">
+            <img src="images/escom.png" style="float:right; height: 100px; border-radius: 3px;">
+            <h1 style="text-align: center;">Elecciones Presidenciales</h1>
+            <br><h2>Servidores disponibles:</h2>
+            <div id="servers" > </div>
+            <div  style="position: relative; height:20vh; width:50vw">
+                <canvas id="graph"></canvas>
+            </div>
+        </div>
+    </body>
+</html>
